@@ -1,0 +1,40 @@
+.featured-collection-slider {
+  padding-left: 55px;
+  padding-right: 55px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featured-collection-slider .carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+}
+
+.carousel-cell {
+  width: 66%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8C8;
+}
+
+.flickity-button:disabled {
+  pointer-events: all !important;
+}
+
+@media screen and (max-width: 920px) {
+  .featured-collection-slider {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .featured-collection-slider .carousel-cell {
+    width: 50%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .featured-collection-slider .carousel-cell {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=slider.css.map */
