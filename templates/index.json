@@ -5,10 +5,14 @@
     },
     "collage": {
       "type": "collage"
+    },
+    "featured_collection": {
+      "type": "featured-collection"
     }
   },
   "order": [
     "slider",
-    "collage"
+    "collage",
+    "featured_collection"
   ]
 }
