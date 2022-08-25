@@ -1,0 +1,36 @@
+Arguments: 
+  /opt/homebrew/Cellar/node/18.7.0/bin/node /Users/rafo/.node/corepack/yarn/1.22.15/bin/yarn.js add @glidejs/glide--
+
+PATH: 
+  /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/rafo/Library/Android/sdk/platform-tools:/Users/rafo/.local/share/zinit/polaris/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/rafo/.fig/bin:/Users/rafo/.local/bin
+
+Yarn version: 
+  1.22.15
+
+Node version: 
+  18.7.0
+
+Platform: 
+  darwin arm64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@glidejs%2fglide--: Not found
+      at params.callback [as _callback] (/Users/rafo/.node/corepack/yarn/1.22.15/lib/cli.js:66140:18)
+      at self.callback (/Users/rafo/.node/corepack/yarn/1.22.15/lib/cli.js:140885:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/Users/rafo/.node/corepack/yarn/1.22.15/lib/cli.js:141857:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/Users/rafo/.node/corepack/yarn/1.22.15/lib/cli.js:141779:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1359:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

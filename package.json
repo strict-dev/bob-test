@@ -1,0 +1,8 @@
+{
+  "name": "bob-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Rafael Feitoza <rafaeljr@outlook.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
