@@ -1,0 +1,30 @@
+
+
+/* .page {
+  color: rgb(var(--color-foreground));
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 4.4rem;
+  width: 100%;
+  padding: 0;
+  text-decoration: none;
+} */
+
+.page:hover {
+  color: black;
+  border: solid 0.1rem black;
+}
+
+.current {
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+}
+
+
+
+/*# sourceMappingURL=component-pagination.css.map */
