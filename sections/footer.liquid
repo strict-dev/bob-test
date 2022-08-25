@@ -1,0 +1,78 @@
+{{ 'footer.css' | asset_url | stylesheet_tag }}
+{{ 'container.css' | asset_url | stylesheet_tag }}
+
+<footer class="footer divide-y flex flex-col relative py-5 bg-slate-100 flex-wrap gap-5">
+  <div class="footer__top flex justify-between items-center py-5 container">
+    <nav>
+      <ul class="flex gap-2 flex-col">
+        {% for link in section.settings.service_links.links %}
+          <li><a href="{{ link.url }}">{{ link.title | upcase }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <nav>
+      <ul class="flex gap-2 flex-col">
+        {% for link in section.settings.institutional_links.links %}
+          <li><a href="{{ link.url }}">{{ link.title | upcase}}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+
+    <input type='text' />
+
+  </div>
+
+  <div class="footer__bottom flex justify-between items-center py-5 container">
+    <span class="text-xs font-bold">COPYRIGHT © {{ "now" | date: "%Y" }}</span>
+
+    <nav>
+      <ul class="flex gap-2">
+        {%- for link in section.settings.client_links.links -%}
+          <li><a href="{{ link.url }}" class="text-xs font-bold">{{ link.title | upcase }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <nav>
+      <ul class="flex gap-2">
+        {%- for link in section.settings.social_links.links -%}
+          <li>
+            <a href="{{ link.url }}">
+              <i class="fa-brands fa-{{ link.title | downcase }} text-md"></i>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "footer",
+  "tag": "footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "service_links",
+      "label": "Links de atendimento ao cliente"
+    },
+    {
+      "type": "link_list",
+      "id": "institutional_links",
+      "label": "Links Institucionais"
+    },
+    {
+      "type": "link_list",
+      "id": "client_links",
+      "label": "Links de Ajuda"
+    },
+    {
+      "type": "link_list",
+      "id": "social_links",
+      "label": "Link para Redes sociais"
+    }
+  ]
+}
+{% endschema %}
