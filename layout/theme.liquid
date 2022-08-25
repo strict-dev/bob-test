@@ -1,0 +1,15 @@
+<html>
+  <head>
+    {{ content_for_header }}
+    {{ 'fontawasome.js' | asset_url | script_tag}}
+    {{ 'base.css' | assets_url | stylesheet_tag }}
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    {% section 'header' %}
+    
+    {{ content_for_layout }}
+    
+    {% section 'footer' %}
+  </body>
+</html>
