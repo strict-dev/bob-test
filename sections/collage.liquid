@@ -1,0 +1,60 @@
+<section class='flex flex-col gap-8 container m-auto mt-20'>
+  <h2 class='text-4xl text-center font-medium'>
+    {{ section.settings.heading }}
+  </h2>
+
+  <div class='grid  grid-cols-2 grid-rows-4 gap-2 grid-flow-row'>
+    {% for block in section.blocks %}
+      <a href='{{ block.settings.collection.url }}' class='relative hover:scale-[1.01] transition-transform'>
+        <div class='absolute top-8 left-8 text-4xl flex flex-col gap-2 text-gray-700'>
+          <span class='text-2xl '>
+            {{ block.settings.collection.title | upcase }}
+          </span>
+          <span class='text-sm text-gray-500'> ver produtos > </span>
+        </div>
+
+        <img
+          class='
+            {% if forloop.index == 1 %}
+              box row-start-1 row-span-4 col-start-1 col-span-1
+            {% elsif forloop.index == 2  %}
+              box col-start-2 col-span-2 grow
+            {% else %}
+              box row-start-3 row-span-2 col-start-2 col-span-0
+            {% endif %}
+          '
+          src='{{ block.settings.collection | image_url }}'
+          alt='{{ block.settings.collection.image.alt }} '
+        >
+      </a>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "collage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Multimedia collage"
+    }
+  ],
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Escolha uma coleção"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
