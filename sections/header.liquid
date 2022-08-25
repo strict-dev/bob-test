@@ -1,15 +1,26 @@
-<header class="py-10 flex sticky flex-col">
-
-  <div class="header__top p-4 flex items-center justify-between container m-auto relative ">
-    <a href="tel:{{ section.settings.phone_number }}" class="sm:flex items-center gap-3 hidden ">
-      <i class="fa-solid fa-phone"></i>
-      <span class="text-sm font-light">{{ section.settings.phone_number }}</span>
+<header class='py-10 flex sticky flex-col'>
+  <div class='header__top p-4 flex items-center justify-between container m-auto relative '>
+    <a href='tel:{{ section.settings.phone_number }}' class='sm:flex items-center gap-3 hidden '>
+      <i class='fa-solid fa-phone'></i>
+      <span class='text-sm font-light'>{{ section.settings.phone_number }}</span>
     </a>
 
-    <img src="{{ section.settings.logo | img_url: '300x128' }}" alt="{{ section.settings.logo.alt }}" class="w-32 object-contain sm:absolute sm:top-1/2 sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2">
+    <a
+      href='/'
+      class='w-32 object-contain sm:absolute sm:top-1/2 sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2'
+    >
+      <img
+        src='{{ section.settings.logo | image_url: width: 300, height: 128 }}'
+        width='300'
+        height='128'
+        loading='lazy'
+        alt='{{ section.settings.logo.alt }}'
+        class='w-32 object-contain sm:absolute sm:top-1/2 sm:left-1/2 sm:transform sm:-translate-x-1/2 sm:-translate-y-1/2'
+      >
+    </a>
 
-    <a href="/cart" class="flex items-center hover:scale-105 transition-transform">
-      <div class="w-12">
+    <a href='/cart' class='flex items-center hover:scale-105 transition-transform'>
+      <div class='w-12'>
         {% liquid
           if cart == empty
             render 'icon-cart-empty'
@@ -19,30 +30,30 @@
         %}
       </div>
 
-      <span>
-        ({{ cart.item_count }}) - {{ cart.total_price | money }}
-      </span>
+      <span> ({{ cart.item_count }}) - {{ cart.total_price | money }} </span>
     </a>
   </div>
 
-  <nav class="header__bottom hidden sm:block m-auto">
-    <ul class="flex">
+  <nav class='header__bottom hidden sm:block m-auto'>
+    <ul class='flex'>
       {% for link in section.settings.collections.links %}
         <li>
-          <a 
-            href="{{ link.url }}"
-            class="p-4 block
-            {% if link.url == page.url %}
-              text-black border-b-2 border-black
-            {% endif %}
-            
-            {% if link.title == 'Outlet' %}
-              text-red-500
-            {% endif %}
+          <a
+            href='{{ link.url }}'
+            class='
+              p-4 block
+              hover:scale-105 transition-transform
+              {% if link.url == page.url %}
+                text-black border-b-2 border-black
+              {% endif %}
 
-            ">
-              {{ link.title }}
-            </a>
+              {% if link.title == 'Outlet' %}
+                text-red-500
+              {% endif %}
+            '
+          >
+            {{ link.title }}
+          </a>
         </li>
       {% endfor %}
     </ul>
@@ -50,25 +61,25 @@
 </header>
 
 {% schema %}
-  {
-    "name": "header",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "logo",
-        "label": "Logotipo"
-      },
-      {
-        "type": "text",
-        "id": "phone_number",
-        "label": "Número de telefone",
-        "default": "(11) 99999-9999"
-      },
-      {
-        "type": "link_list",
-        "id": "collections",
-        "label": "Links de coleções"
-      }
-    ]
-  }
+{
+  "name": "header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logotipo"
+    },
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Número de telefone",
+      "default": "(11) 99999-9999"
+    },
+    {
+      "type": "link_list",
+      "id": "collections",
+      "label": "Links de coleções"
+    }
+  ]
+}
 {% endschema %}
