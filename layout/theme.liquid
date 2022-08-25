@@ -1,15 +1,17 @@
 <html>
   <head>
     {{ content_for_header }}
-    {{ 'fontawasome.js' | asset_url | script_tag}}
+    {{ 'fontawasome.js' | asset_url | script_tag }}
     {{ 'base.css' | assets_url | stylesheet_tag }}
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link rel='stylesheet' href='https://unpkg.com/flickity@2/dist/flickity.min.css'>
+    <script src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js'></script>
   </head>
   <body>
     {% section 'header' %}
-    
+
     {{ content_for_layout }}
-    
+
     {% section 'footer' %}
   </body>
 </html>
