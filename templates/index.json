@@ -2,9 +2,13 @@
   "sections": {
     "slider": {
       "type": "slider"
+    },
+    "collage": {
+      "type": "collage"
     }
   },
   "order": [
-    "slider"
+    "slider",
+    "collage"
   ]
 }

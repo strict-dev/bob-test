@@ -1,0 +1,47 @@
+<div class='featured-collection-slider w-full mb-10'>
+  <div class='products-carousel js-flickity' data-flickity='{ "autoPlay": true, "cellAlign": "left", "contain": true }'>
+    {% for block in section.blocks %}
+      <div class='carousel-cell h-1/2'>
+        <a href='#'>
+          <img class='object-fill' src='{{ block.settings.banner_image | img_url: 'master' }}'>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "slide",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner"
+        },
+        {
+          "type": "text",
+          "id": "banner_img_alt",
+          "label": "Descrição da imagem"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "slider"
+    }
+  ]
+}
+{% endschema %}
