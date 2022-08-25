@@ -18,8 +18,9 @@
         {% endfor %}
       </ul>
     </nav>
-
-    <input type='text' />
+    
+    {% assign newsletter = section.settings.newsletter %}
+    {% render 'newsletter' with newsletter %}
 
   </div>
 
@@ -72,6 +73,12 @@
       "type": "link_list",
       "id": "social_links",
       "label": "Link para Redes sociais"
+    },
+    {
+      "type": "text",
+      "id": "newsletter",
+      "label": "Newsletter",
+      "default": "Cadastre-se e receba nossas novidades"
     }
   ]
 }
