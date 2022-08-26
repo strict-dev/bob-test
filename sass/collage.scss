@@ -1,0 +1,24 @@
+.grid-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-areas:
+    "A B"
+    "A C";
+  gap: 1rem;
+  min-height: 0;
+}
+
+.item1 {
+  grid-area: A;
+  height: 100%;
+}
+
+.item2 {
+  grid-area: B;
+  height: 100%;
+}
+
+.item3 {
+  grid-area: C;
+  height: 100%;
+}
