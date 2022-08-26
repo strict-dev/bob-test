@@ -1,13 +1,84 @@
 {
   "sections": {
     "slider": {
-      "type": "slider"
+      "type": "slider",
+      "blocks": {
+        "46193913-acb6-41fd-bace-6749164e0225": {
+          "type": "banner",
+          "settings": {
+            "banner_image": "shopify:\/\/shop_images\/20220822-HOMEPAGE-BANNERPRINCIPAL-DESKTOP-INVERNO.webp",
+            "banner_url": "shopify:\/\/collections\/blusas"
+          }
+        },
+        "3762ae5d-0c0c-483d-a1a9-0916966f903d": {
+          "type": "banner",
+          "settings": {
+            "banner_image": "shopify:\/\/shop_images\/20220815-HOMEPAGE-BANNERPRINCIPAL-DESKTOP-TONS-NEUTROS.webp",
+            "banner_url": "shopify:\/\/collections\/blusas"
+          }
+        },
+        "b39f4d28-7e4e-4c38-952d-97426ad97a6e": {
+          "type": "banner",
+          "settings": {
+            "banner_image": "shopify:\/\/shop_images\/20220815-HOMEPAGE-BANNERPRINCIPAL-DESKTOP-PRIMAVERA-VERAO.webp",
+            "banner_url": "shopify:\/\/collections\/blusas"
+          }
+        },
+        "67e4242c-89de-4db1-8c81-709329a1ac7a": {
+          "type": "banner",
+          "settings": {
+            "banner_image": "shopify:\/\/shop_images\/banner1.webp",
+            "banner_url": "shopify:\/\/collections\/blusas"
+          }
+        }
+      },
+      "block_order": [
+        "46193913-acb6-41fd-bace-6749164e0225",
+        "3762ae5d-0c0c-483d-a1a9-0916966f903d",
+        "b39f4d28-7e4e-4c38-952d-97426ad97a6e",
+        "67e4242c-89de-4db1-8c81-709329a1ac7a"
+      ],
+      "settings": {
+        "title": ""
+      }
     },
     "collage": {
-      "type": "collage"
+      "type": "collage",
+      "blocks": {
+        "841cd844-7507-4faf-b9fc-5c1c41ec04a9": {
+          "type": "collection",
+          "settings": {
+            "collection": "blusas"
+          }
+        },
+        "34b928ab-6b40-47ec-8d11-9460648d979c": {
+          "type": "collection",
+          "settings": {
+            "collection": "collection16"
+          }
+        },
+        "e9b82e2a-ddeb-445a-98fc-46b42c078221": {
+          "type": "collection",
+          "settings": {
+            "collection": "collection1"
+          }
+        }
+      },
+      "block_order": [
+        "841cd844-7507-4faf-b9fc-5c1c41ec04a9",
+        "34b928ab-6b40-47ec-8d11-9460648d979c",
+        "e9b82e2a-ddeb-445a-98fc-46b42c078221"
+      ],
+      "settings": {
+        "heading": "Multimedia collage"
+      }
     },
     "featured_collection": {
-      "type": "featured-collection"
+      "type": "featured-collection",
+      "settings": {
+        "heading": "Coleção em Destaque",
+        "collection": "blusas"
+      }
     }
   },
   "order": [
