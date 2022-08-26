@@ -1,0 +1,115 @@
+<section class='container flex gap-8 py-16 mx-4 sm:m-auto'>
+  <div class='flex flex-col w-1/2 gap-4 main-product__product-gallery'>
+    <img
+      class='object-cover'
+      src='{{ product.featured_image | img_url: '480x480' }}'
+      alt='{{ product.featured_image.alt}}'
+    >
+    <div class='flex gap-2'>
+      {% for image in product.images %}
+        <img
+          class='w-20 h-20 cursor-pointer object-fit'
+          class=''
+          src='{{ image | img_url: '100x100' }}'
+          alt='{{ image.alt }}'
+        >
+      {% endfor %}
+    </div>
+  </div>
+  <div class='flex flex-col w-1/2 gap-10 divide-y main-product__product-info'>
+    <div class='flex flex-col gap-8'>
+      <div class='flex flex-col gap-4'>
+        <h1 class='text-4xl font-light text-zinc-500'>
+          {{ product.title }}
+        </h1>
+        <span class='text-4xl font-bold'>
+          {{ product.price | money }}
+        </span>
+      </div>
+
+      <p class='text-zinc-700'>
+        {{ product.description }}
+      </p>
+    </div>
+
+    <div class='flex flex-col justify-center gap-8 pt-8'>
+      <div class='flex flex-col gap-8'>
+        {% for option in product.options_with_values %}
+          {% if option.name == 'Cor' %}
+            <div class='flex gap-2'>
+              <h3>
+                {{ option.name }}
+              </h3>
+              <div class='flex gap-2'>
+                {% for value in option.values %}
+                  <button class='h-8 w-8 bg-{{ value }}-500 hover:opacity-80'></button>
+                {% endfor %}
+              </div>
+            </div>
+          {% elsif option.name == 'Tamanho' %}
+            <div class='flex items-center gap-2'>
+              <h3>
+                {{ option.name }}
+              </h3>
+              <div class='flex items-center justify-center gap-2'>
+                {% for value in option.values %}
+                  <button class='h-10 px-2 transition border border-zinc-500 bg-pi hover:bg-zinc-900 hover:text-white'>
+                    {{ value }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class=''>
+        {% comment %} buy {% endcomment %}
+        {% form 'product', product %}
+          <!-- form content -->
+          <input
+            type='hidden'
+            name='id'
+            value='{{ product.selected_or_first_available_variant.id }}'
+            disabled
+          >
+          <button
+            type='submit'
+            value='Add to cart'
+            class='h-12 px-4 text-white transition bg-zinc-900 hover:bg-zinc-900/80'
+          >
+            Comprar
+          </button>
+        {% endform %}
+      </div>
+    </div>
+
+    <div></div>
+  </div>
+
+  <div class='product-recommendations' data-product-id='{{ product.id }}' data-limit='4'>
+    {%- if recommendations.products_count > 0 -%}
+      <h2>Produtos relacionados</h2>
+      <ul>
+        {%- for product in recommendations.products -%}
+          <li class='product'>
+            <a href='{{ product.url }}'>
+              <img
+                class='product__img'
+                src='{{ product.featured_image | img_url: '300x300' }}'
+                alt='{{ product.featured_image.alt }}'
+              >
+              <p class='product__title'>{{ product.title }}</p>
+              <p class='product__price'>{{ product.price | money }}</p>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "main-product"
+}
+{% endschema %}
