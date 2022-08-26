@@ -1,0 +1,90 @@
+<link rel='stylesheet' href='{{ 'component-pagination.css' | asset_url }}'>
+<noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
+
+<section class='container py-10 mx-4 sm:m-auto'>
+  <form class='flex items-center justify-between mx-4 sm:m-auto'>
+    <div class='flex items-center justify-center gap-4'>
+      <div class='flex items-center justify-between gap-2'>
+        <label for='SortBy' class='text-zinc-500'>ORDENAR</label>
+        <div class='select'>
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <select
+            name='sort_by'
+            class='facet-filters__sort select__select caption-large'
+            id='SortBy'
+            aria-describedby='a11y-refresh-page-message'
+          >
+            {%- for option in collection.sort_options -%}
+              <option
+                value='{{ option.value | escape }}'
+                {% if option.value == sort_by %}
+                  selected='selected'
+                {% endif %}
+              >
+                {{ option.name | escape }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      </div>
+      <button type='submit' class='px-4 py-2 text-white bg-zinc-900'>Filtrar</button>
+    </div>
+
+    <div class='product-count-vertical light' role='status'>
+      <h2 class='product-count__text text-body'>
+        <span class='text-zinc-500'> Visualizar: </span>
+        <span class='font-bold'>
+          {{ collection.products_count }}
+        </span>
+      </h2>
+    </div>
+  </form>
+
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    <main>
+      <ul class='grid grid-flow-row grid-cols-2 gap-6 m-auto my-10 sm:grid-cols-4 sm:grid-rows-2'>
+        {%- for product in collection.products -%}
+          <li>
+            {%
+              render 'product-card',
+              card_product: product,
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class='flex items-center justify-center h-20 gap-5 p-4'>
+        {{ paginate | default_pagination }}
+      </div>
+    </main>
+  {%- endpaginate -%}
+</section>
+
+<script>
+  Shopify.queryParams = {};
+
+  if (location.search.length) {
+    var params = location.search.substr(1).split('&');
+
+    for (var i = 0; i < params.length; i++) {
+      var keyValue = params[i].split('=');
+
+      if (keyValue.length) {
+        Shopify.queryParams[decodeURIComponent(keyValue[0])] = decodeURIComponent(keyValue[1]);
+      }
+    }
+  }
+
+  document.querySelector('#sort-by').addEventListener('change', function(e) {
+    var value = e.target.value;
+
+    Shopify.queryParams.sort_by = value;
+    location.search = new URLSearchParams(Shopify.queryParams).toString();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "collection-grid"
+}
+{% endschema %}
