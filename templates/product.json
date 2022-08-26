@@ -1,6 +1,6 @@
 {
   "sections": {
-    "product-hero": {
+    "collection-hero": {
       "type": "collection-hero"
     },
     "main-product": {
@@ -8,7 +8,7 @@
     }
   },
   "order": [
-    "product-hero",
+    "collection-hero",
     "main-product"
   ]
 }
