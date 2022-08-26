@@ -1,11 +1,11 @@
-<div class='w-full h-60 flex flex-col items-center justify-center bg-zinc-700 gap-4'>
-  <h1 class='text-white text-3xl'>
+<div class='flex flex-col items-center justify-center w-full gap-4 min-h-[10rem] bg-zinc-700'>
+  <h1 class='text-3xl text-white'>
     {{ collection.title | upcase }}
   </h1>
 
   <div>
     {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-      <nav class='breadcrumb'>
+      <nav class='breadcrumb' role='navigation' aria-label='breadcrumbs' style=''>
         <a href='/' title='Home' class='text-white'>Home</a>
         {% if template contains 'page' %}
           <span aria-hidden='true' class='text-white'>&rsaquo;</span>
@@ -22,6 +22,16 @@
           {% else %}
             <span class='text-white'>{{ collection.title }}</span>
           {% endif %}
+        {% elsif template contains 'product' %}
+          {% if collection.url %}
+            <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+            <a href='{{collection.url}}' class='text-white'>{{ collection.title }}</a>
+          {% endif %}
+          <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+          <span class='text-white'>{{ product.title }}</span>
+        {% else %}
+          <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+          <span class='text-white'>{{ page_title }}</span>
         {% endif %}
       </nav>
     {% endunless %}
