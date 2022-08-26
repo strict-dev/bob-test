@@ -1,34 +1,24 @@
-<link rel='stylesheet' href='{{ 'component-pagination.css' | asset_url }}' media='print' onload="this.media='all'">
+<link rel='stylesheet' href='{{ 'component-pagination.css' | asset_url }}'>
 <noscript>{{ 'component-pagination.css' | asset_url | stylesheet_tag }}</noscript>
 
 {% paginate collections['collection2'].products by 8 %}
-  <div class='container flex flex-col gap-5'>
-    <h2 class='text-4xl text-center font-medium'>
+  <div class='container flex flex-col gap-5 mx-4 sm:m-auto'>
+    <h2 class='text-4xl font-medium text-center'>
       {{ section.settings.heading }}
     </h2>
 
-    <div class='container flex flex-wrap gap-4 m-auto items-center'>
+    <ul class='container grid grid-flow-row grid-cols-2 gap-6 m-auto my-10 sm:grid-cols-4 sm:grid-rows-2'>
       {% for product in collections['collection2'].products %}
-        <a
-          href='{{ product.url }}'
-          class='flex flex-col basis-64 shadow-sm rounded-sm hover:scale-105 hover:shadow-md transition-all'
-        >
-          <img
-            src='{{ product.featured_image | img_url: 'medium' }}'
-            alt='{{ product.featured_image.alt | escape }}'
-          >
-          <div class='p-4 flex items-end'>
-            <div>
-              <h3>{{ product.title }}</h3>
-              <p>{{ product.price | money }}</p>
-            </div>
-            <i class='fa-regular fa-heart hover:text-red-600 hover:scale-110 transition-colors'></i>
-          </div>
-        </a>
+        <li class='grid__item'>
+          {%
+            render 'product-card',
+            card_product: product,
+          %}
+        </li>
       {% endfor %}
-    </div>
+    </ul>
 
-    <div class='container m-auto flex gap-5 p-4'>
+    <div class='flex items-center justify-center h-20 gap-5 p-4'>
       {{ paginate | default_pagination }}
     </div>
   </div>
@@ -47,7 +37,7 @@
     },
     {
       "type": "collection",
-      "id": "rafo",
+      "id": "collection",
       "label": "Categoria"
     }
   ]

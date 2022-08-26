@@ -1,0 +1,16 @@
+<a
+  href='{{ card_product.url }}'
+  class='flex flex-col basis-64 shadow-sm rounded-sm hover:scale-105 hover:shadow-md transition-all'
+>
+  <img
+    src='{{ card_product.featured_image | img_url: 'medium' }}'
+    alt='{{ card_product.featured_image.alt | escape }}'
+  >
+  <div class='p-4 flex items-end justify-between'>
+    <div class='h-20 flex flex-col justify-between'>
+      <h3>{{ card_product.title }}</h3>
+      <p class='font-bold'>{{ card_product.price | money }}</p>
+    </div>
+    <i class='fa-regular fa-heart hover:text-red-600 hover:scale-110 transition-colors'></i>
+  </div>
+</a>
