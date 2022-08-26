@@ -1,0 +1,36 @@
+<div class='w-full h-60 flex flex-col items-center justify-center bg-zinc-700 gap-4'>
+  <h1 class='text-white text-3xl'>
+    {{ collection.title | upcase }}
+  </h1>
+
+  <div>
+    {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
+      <nav class='breadcrumb'>
+        <a href='/' title='Home' class='text-white'>Home</a>
+        {% if template contains 'page' %}
+          <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+          <span class='text-white'>{{ page.title }}</span>
+        {% elsif template contains 'collection' and collection.handle %}
+          <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+          {% if current_tags %}
+            {% capture url -%}
+              /collections/{{ collection.handle -}}
+            {%- endcapture %}
+            <a href='{{ url }}' class='text-white'>{{ collection.title }}</a>
+            <span aria-hidden='true' class='text-white'>&rsaquo;</span>
+            <span class='text-white'>{{ current_tags | join: ' + ' }}</span>
+          {% else %}
+            <span class='text-white'>{{ collection.title }}</span>
+          {% endif %}
+        {% endif %}
+      </nav>
+    {% endunless %}
+    <div></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "collection-hero"
+}
+{% endschema %}
